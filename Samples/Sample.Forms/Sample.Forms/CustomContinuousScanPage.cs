@@ -20,7 +20,8 @@ namespace Sample.Forms
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				AutomationId = "zxingScannerView",
-			};
+                ZoomFactor = 1.5
+            };
 			zxing.OnScanResult += (result) =>
 				Device.BeginInvokeOnMainThread(async () =>
 				{
@@ -80,12 +81,38 @@ namespace Sample.Forms
 			};
 			grid.Children.Add(zxing);
 			grid.Children.Add(overlay);
-			grid.Children.Add(startButton);
-			grid.Children.Add(cancelButton);
-			grid.Children.Add(stopButton);
 
-			// The root page of your application
-			Content = grid;
+            var zoomSlider = new Slider
+            {
+                Maximum = 5.0,
+                Minimum = 1.0,
+                HeightRequest = 40,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                Value = zxing.ZoomFactor
+            };
+            zxing.SetBinding(ZXingScannerView.ZoomFactorProperty, new Binding("Value", BindingMode.TwoWay, null, null, null, zoomSlider));
+
+            var optionsStackLayout = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.End
+            };
+            var buttonArea = new Grid
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
+            buttonArea.Children.Add(startButton);
+            buttonArea.Children.Add(cancelButton);
+            buttonArea.Children.Add(stopButton);
+
+            optionsStackLayout.Children.Add(zoomSlider);
+            optionsStackLayout.Children.Add(buttonArea);
+
+            grid.Children.Add(optionsStackLayout);
+
+            // The root page of your application
+            Content = grid;
 		}
 
 		protected override void OnAppearing()

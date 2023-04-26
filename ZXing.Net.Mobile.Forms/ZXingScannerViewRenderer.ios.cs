@@ -65,7 +65,9 @@ namespace ZXing.Net.Mobile.Forms.iOS
 
 				if (formsView.IsTorchOn)
 					zxingView.Torch(formsView.IsTorchOn);
-			}
+
+                zxingView.ChangeZoomFactor(formsView.ZoomFactor);
+            }
 
 			base.OnElementChanged(e);
 		}
@@ -94,7 +96,10 @@ namespace ZXing.Net.Mobile.Forms.iOS
 					else
 						zxingView.PauseAnalysis();
 					break;
-			}
+                case nameof(ZXingScannerView.ZoomFactor):
+                    zxingView.ChangeZoomFactor(formsView.ZoomFactor);
+                    break;
+            }
 		}
 
 		public override void TouchesEnded(NSSet touches, UIKit.UIEvent evt)

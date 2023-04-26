@@ -90,5 +90,14 @@ namespace ZXing.Net.Mobile.Forms
 			get => (ICommand)GetValue(ScanResultCommandProperty);
 			set => SetValue(ScanResultCommandProperty, value);
 		}
-	}
+
+        public static readonly BindableProperty ZoomFactorProperty =
+            BindableProperty.Create(nameof(ZoomFactor), typeof(double), typeof(ZXingScannerView), 1.0);
+
+        public double ZoomFactor
+        {
+            get => (double)GetValue(ZoomFactorProperty);
+            set => SetValue(ZoomFactorProperty, value);
+        }
+    }
 }

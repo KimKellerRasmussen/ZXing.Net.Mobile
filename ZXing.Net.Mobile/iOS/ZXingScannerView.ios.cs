@@ -685,8 +685,39 @@ namespace ZXing.Mobile
 				return hasTorch.Value;
 			}
 		}
-		#endregion
-	}
+
+        public double ZoomFactor { get; set; }
+        public void ChangeZoomFactor(double zoomFactor)
+        {
+            try
+            {
+                var device = captureDevice ?? AVCaptureDevice.GetDefaultDevice(AVMediaType.Video);
+                if (device != null && device.LockForConfiguration(out var err))
+                {
+                    nfloat videoZoomFactor = (nfloat)zoomFactor;
+                    if (videoZoomFactor < device.MinAvailableVideoZoomFactor)
+                        videoZoomFactor = device.MinAvailableVideoZoomFactor;
+                    if (videoZoomFactor > device.MaxAvailableVideoZoomFactor)
+                        videoZoomFactor = device.MaxAvailableVideoZoomFactor;
+                    device.VideoZoomFactor = videoZoomFactor;
+
+                    ZoomFactor = videoZoomFactor;
+
+                    try
+                    {
+                        device.UnlockForConfiguration();
+                    }
+                    catch { }
+                }
+                else
+                {
+                    ZoomFactor = zoomFactor;
+                }
+            }
+            catch { }
+        }
+        #endregion
+    }
 
 	struct AVConfigs
 	{

@@ -72,7 +72,7 @@ namespace ZXing.Mobile
 			if (!string.IsNullOrEmpty(CharacterSet))
 				reader.Options.CharacterSet = CharacterSet;
 			if (TryInverted.HasValue)
-				reader.TryInverted = TryInverted.Value;
+				reader.Options.TryInverted = TryInverted.Value;
 			if (AssumeGS1.HasValue)
 				reader.Options.AssumeGS1 = AssumeGS1.Value;
 

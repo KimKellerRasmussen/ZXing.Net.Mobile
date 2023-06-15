@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Foundation;
+using Sample.iOS;
 using UIKit;
 
 namespace ZxingSharp.MonoTouch.Sample
@@ -13,7 +14,7 @@ namespace ZxingSharp.MonoTouch.Sample
 		{
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
-			UIApplication.Main(args, null, "AppDelegate");
+			UIApplication.Main(args, null, typeof(AppDelegate));
 		}
 	}
 }

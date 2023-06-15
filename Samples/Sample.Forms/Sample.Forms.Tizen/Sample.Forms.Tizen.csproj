@@ -22,9 +22,11 @@
 
   <!-- Include Nuget Package for Tizen Project building -->
   <ItemGroup>
+<!--
     <PackageReference Include="Tizen.NET" Version="8.0.0.15631">
       <ExcludeAssets>Runtime</ExcludeAssets>
     </PackageReference>
+-->
     <PackageReference Include="Tizen.NET.Sdk" Version="1.1.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
   </ItemGroup>

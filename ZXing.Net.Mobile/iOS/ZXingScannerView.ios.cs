@@ -377,7 +377,7 @@ namespace ZXing.Mobile
 			if (AVMediaType.Video == null)
 				return;
 
-			var device = AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+			var device = AVCaptureDevice.GetDefaultDevice(AVMediaType.Video);
 
 			if (device == null)
 				return;
@@ -615,7 +615,7 @@ namespace ZXing.Mobile
 		{
 			try
 			{
-				var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+				var device = captureDevice ?? AVCaptureDevice.GetDefaultDevice(AVMediaType.Video);
 				if (device != null && (device.HasTorch || device.HasFlash))
 				{
 					device.LockForConfiguration(out var err);
@@ -680,7 +680,7 @@ namespace ZXing.Mobile
 				if (hasTorch.HasValue)
 					return hasTorch.Value;
 
-				var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+				var device = captureDevice ?? AVCaptureDevice.GetDefaultDevice(AVMediaType.Video);
 				hasTorch = device.HasFlash || device.HasTorch;
 				return hasTorch.Value;
 			}

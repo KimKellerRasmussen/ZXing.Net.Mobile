@@ -88,7 +88,8 @@ namespace Sample.Forms
                 Minimum = 1.0,
                 HeightRequest = 40,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                Value = zxing.ZoomFactor
+                Value = zxing.ZoomFactor,
+				Margin = new Thickness(20, 0)
             };
             zxing.SetBinding(ZXingScannerView.ZoomFactorProperty, new Binding("Value", BindingMode.TwoWay, null, null, null, zoomSlider));
 

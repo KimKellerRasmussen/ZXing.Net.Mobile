@@ -33,6 +33,7 @@
 		<DebugType>portable</DebugType>
 		<Configurations>Debug;Release</Configurations>
 		<IncludeProjectPriFile>false</IncludeProjectPriFile>
+		<BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
 		<DebugSymbols>true</DebugSymbols>
@@ -89,9 +90,9 @@
 		<Compile Include="**\*.tizen.*.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
-		<PackageReference Include="ZXing.Net" Version="0.16.6" />
+		<PackageReference Include="ZXing.Net" Version="0.16.9" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ZXing.Net.Mobile\ZXing.Net.Mobile.csproj" />

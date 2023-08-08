@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    x:Class="Sample.Forms.CustomContinuousScanXamlPage">
+    <Grid
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
+        <zxing:ZXingScannerView
+            x:Name="ScannerView"
+            IsScanning="True"
+            IsAnalyzing="True"
+            AutomationId="zxingScannerView"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Options="{Binding BarcodeOptions}"
+            ZoomFactor="{Binding ZoomFactor}"
+            IsTorchOn="{Binding IsTorchOn}"
+            Result="{Binding Result, Mode=TwoWay}"
+            ScanResultCommand="{Binding ScanResultCommand}"
+            >
+        </zxing:ZXingScannerView>
+
+        <zxing:ZXingDefaultOverlay
+            TopText = "Hold your phone up to the barcode"
+			BottomText = "Scanning will happen automatically"
+			AutomationId = "zxingDefaultOverlay"
+            ShowFlashButton="{Binding HasTorch}"
+            FlashCommand="{Binding FlashCommand}"
+            >
+        </zxing:ZXingDefaultOverlay>
+
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="End">
+
+            <Slider
+                Maximum="5.0"
+                Minimum="1.0"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Value="{Binding ZoomFactor}"
+                Margin="20,0"
+            />
+
+            <Grid
+                HorizontalOptions="FillAndExpand">
+                <Button
+                    WidthRequest="100"
+				    HeightRequest="50"
+				    HorizontalOptions="End"
+				    VerticalOptions="End"
+				    Text="enable"
+                    Command="{Binding EnableButtonCommand}"
+                    >
+                </Button>
+                <Button
+                    WidthRequest="100"
+				    HeightRequest="50"
+				    HorizontalOptions="Center"
+				    VerticalOptions="End"
+				    Text="cancel"
+                    Command="{Binding CancelButtonCommand}"
+                    >
+                </Button>
+                <Button
+                    WidthRequest="100"
+				    HeightRequest="50"
+				    HorizontalOptions="Start"
+				    VerticalOptions="End"
+				    Text="disable"
+                    Command="{Binding DisableButtonCommand}"
+                    >
+                </Button>
+            </Grid>                
+        </StackLayout>
+    </Grid>
+</ContentPage>
+

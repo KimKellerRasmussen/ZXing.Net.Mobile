@@ -15,7 +15,8 @@ namespace Sample.Forms
 		Button buttonScanCustomOverlay;
 		Button buttonScanContinuously;
 		Button buttonScanContinuousCustomPage;
-		Button buttonScanCustomPage;
+        Button buttonScanContinuousCustomXamlPage;
+        Button buttonScanCustomPage;
 		Button buttonGenerateBarcode;
 		
 
@@ -119,8 +120,18 @@ namespace Sample.Forms
 				await Navigation.PushAsync(customContinuousScanPage);
 			};
 
+            buttonScanContinuousCustomXamlPage = new Button
+            {
+                Text = "Scan Continuously with Custom Xaml Page",
+                AutomationId = "scanContinuouslyWithCustomXamlPage",
+            };
+            buttonScanContinuousCustomXamlPage.Clicked += async delegate
+            {
+                var customContinuousScanXamlPage = new CustomContinuousScanXamlPage();
+                await Navigation.PushAsync(customContinuousScanXamlPage);
+            };
 
-			buttonGenerateBarcode = new Button
+            buttonGenerateBarcode = new Button
 			{
 				Text = "Barcode Generator",
 				AutomationId = "barcodeGenerator",
@@ -136,7 +147,8 @@ namespace Sample.Forms
 			stack.Children.Add(buttonScanContinuously);
 			stack.Children.Add(buttonScanCustomPage);
 			stack.Children.Add(buttonScanContinuousCustomPage);
-			stack.Children.Add(buttonGenerateBarcode);
+            stack.Children.Add(buttonScanContinuousCustomXamlPage);
+            stack.Children.Add(buttonGenerateBarcode);
 
 			Content = stack;
 		}

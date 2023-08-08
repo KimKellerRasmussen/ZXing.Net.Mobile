@@ -694,7 +694,7 @@ namespace ZXing.Mobile
                 var device = captureDevice ?? AVCaptureDevice.GetDefaultDevice(AVMediaType.Video);
                 if (device != null && device.LockForConfiguration(out var err))
                 {
-                    nfloat videoZoomFactor = (nfloat)zoomFactor;
+                    var videoZoomFactor = (nfloat)zoomFactor;
                     if (videoZoomFactor < device.MinAvailableVideoZoomFactor)
                         videoZoomFactor = device.MinAvailableVideoZoomFactor;
                     if (videoZoomFactor > device.MaxAvailableVideoZoomFactor)
@@ -711,7 +711,7 @@ namespace ZXing.Mobile
                 }
                 else
                 {
-                    ZoomFactor = zoomFactor;
+                    // ZoomFactor = zoomFactor;
                 }
             }
             catch { }
